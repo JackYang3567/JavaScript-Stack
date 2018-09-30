@@ -174,7 +174,7 @@ $ git push origin master提交给默认分支
 ### 5.2. 检验
 在本地Client的另外一个目录下，克隆一下：
 ```
-$ git clone git@10.123.123.123:/srv/gitrepo/project.git
+$ git clone git@39.108.147.42:/srv/gitrepo/project.git
 ```
 看看text.txt文件是否存在，内容是否对。
 
