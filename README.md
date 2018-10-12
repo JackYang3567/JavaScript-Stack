@@ -1,6 +1,6 @@
 # JavaScript Stack
- - M**N Stack
- - MEAN Stack
+ - M**N Stack 
+ -  [MEAN Stack](LICENSE)
  - MERN Stack
  - MKAN Stack 
  - MKRN Stack
