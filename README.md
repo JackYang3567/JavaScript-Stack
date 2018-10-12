@@ -1,6 +1,6 @@
 # JavaScript Stack
  - M**N Stack 
- -  [MEAN Stack](/tree/02-MEAN-Stack)
+ -  [MEAN Stack](https://github.com/JackYang3567/JavaScript-Stack/tree/02-MEAN-Stack)
  - MERN Stack
  - MKAN Stack 
  - MKRN Stack
