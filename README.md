@@ -12,6 +12,7 @@
 # Redis
 
 # Distributed Version Control System Git
+- [Git 服务器搭建及存储库的创建](../../tree/31-Git-install)
 
 # RMKVN & RMKRN & RMKAN
 
