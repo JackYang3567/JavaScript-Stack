@@ -1,10 +1,12 @@
 # Distributed Version Control System Git
 
+## 3.1 /Git 服务器搭建及存储库的创建
+
 环境说明 
 - CentOS 7.x 最小安装 
 - 配置网络连接
 
-## 1. 安装Git及创建用户
+### 1. 安装Git及创建用户
 ```
 # 安装Git
 $ yum install git
@@ -21,7 +23,7 @@ git:x:503:503::/home/git:/bin/bash
 # 改为：
 git:x:503:503::/home/git:/bin/git-shell
 ```
-## 2. 创建证书登录
+### 2. 创建证书登录
 ```
 $ mkdir /home/git/.ssh
 $ chmod 700 /home/git/.ssh
@@ -43,7 +45,7 @@ ssh-keygen -t rsa -C jack@servefuture.com
 
 
 ```
-## 3.初始化Git仓库
+### 3.初始化Git仓库
 ```
 $ cd /srv
 $ mkdir gitrepo
@@ -57,29 +59,29 @@ $ git init --bare koa-redis-waiter.git
 $ chown -R git:git koa-redis-waiter.git
 ```
 
-## 4. 克隆仓库
+### 4. 克隆仓库
 ```
 在另一台电脑上（下面称为：Client），安装git，并且运行下面的命令：
 $ sudo git clone git@39.108.147.42:/srv/gitrepo/koa-redis-waiter.git
 ```
 
 
-## 5. 验证安装
-### 5.1. 推送到远程服务器
+### 5. 验证安装
+#### 5.1. 推送到远程服务器
 ```
 在本地Client的project目录下，创建一个文件：text.txt，内容随意，然后上传到远端：
 $ git add . 添加所有文件  注意有个 . 
 $ git commit -m '注释' 提交本地
 $ git push origin master提交给默认分支
 ```
-### 5.2. 检验
+#### 5.2. 检验
 在本地Client的另外一个目录下，克隆一下：
 ```
 $ git clone git@39.108.147.42:/srv/gitrepo/project.git
 ```
 看看text.txt文件是否存在，内容是否对。
 
-### 5.3. 常用的Git命令：
+#### 5.3. 常用的Git命令：
 ```
 $ git add . 添加所有文件  注意有个 . 
 $ git commit -m '注释' 提交本地
