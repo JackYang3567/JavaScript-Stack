@@ -8,7 +8,7 @@
  - [7、RMXXN Stack](../../tree/07-RMXXN-Stack) 
 
 # 1、MongoDB
-[1、MongoDB 使用地理空间索引](../../tree/11-MongoDB-uses-geospatial-ndex)
+- [1、MongoDB 使用地理空间索引](../../tree/11-MongoDB-uses-geospatial-ndex)
 
 # 2、Redis
 
