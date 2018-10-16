@@ -1,6 +1,6 @@
 # Distributed Version Control System Git
 
-## 3.1 /Git 服务器搭建及存储库的创建
+## 3.1 、Git 服务器搭建及存储库的创建
 
 环境说明 
 - CentOS 7.x 最小安装 
