@@ -1,3 +1,5 @@
+学历代表你的过去，能力代表你的现在，学习代表你的将来！
+
 # 0、JavaScript Stack
  - [1、MXXN Stack](../../tree/01-MXXN-Stack) 
  - [2、MEAN Stack](../../tree/02-MEAN-Stack)
