@@ -20,6 +20,7 @@
 - [1、MongoDB 使用地理空间索引](../../tree/11-MongoDB-uses-geospatial-ndex)
 
 # 2、Redis
+- [Mastering Redis](https://github.com/PacktPublishing/Mastering-Redis)
 
 # 3、Distributed Version Control System Git
 - [1、Git 服务器搭建及存储库的创建](../../tree/31-Git-install)
