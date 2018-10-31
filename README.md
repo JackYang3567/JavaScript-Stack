@@ -2,6 +2,14 @@
 
 [Android Studio](http://www.android-studio.org/)
 
+### CentOS 7启动nginx
+```
+whereis nginx
+nginx: /usr/local/nginx
+-bash-4.2# cd /usr/local/nginx/
+sbin/nginx
+```
+
 # 0、JavaScript Stack
  - [1、MXXN Stack](../../tree/01-MXXN-Stack) 
  - [2、MEAN Stack](../../tree/02-MEAN-Stack)
