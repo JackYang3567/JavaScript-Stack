@@ -16,3 +16,15 @@ $ curl https://www.servefuture.com//holiday/show/5bbc8488a5373341cade1c41
    }
 }
 ```
+
+#### 2、curl POST 请求
+- POST请求用 -X POST来申明请求方法 用-d 参数，来传送参数。
+运行命令：
+```
+curl https://www.servefuture.com/https://servefuture.com/orders/synchOrder -X post -d -H "User-Agent:request,content-type: application/json,timestamp:1541990911,appkey:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoiNiJ9.M0Zc-zoTO6ANvLASNxZSkxfaxLHreB29xYrpXzb_TOE,signature:" -d OrderId=3055219855&Field=UserName&Value=Jack
+
+curl -d "OrderId=3055219855&Field=UserName&Value=Jack123" "https://servefuture.com/orders/requestSynchOrder"
+或
+curl -H '{"User-Agent":"request","content-type":"application/json","timestamp":"1541994636000","appkey":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoiNiJ9.M0Zc-zoTO6ANvLASNxZSkxfaxLHreB29xYrpXzb_TOE","signature":"DB745095D5563CBE07253DACF8779978"}' -d '{"OrderId":"3055219855","Field":"UserName","Value":"Jack"}' "https://servefuture.com/orders/synchOrder"
+```
+输出结果：
