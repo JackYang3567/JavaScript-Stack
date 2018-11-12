@@ -26,3 +26,10 @@ curl -d "OrderId=3055219855&Field=UserName&Value=Jack123" "https://servefuture.c
 curl -H '{"User-Agent":"request","content-type":"application/json","timestamp":"1541994636000","appkey":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoiNiJ9.M0Zc-zoTO6ANvLASNxZSkxfaxLHreB29xYrpXzb_TOE","signature":"DB745095D5563CBE07253DACF8779978"}' -d '{"OrderId":"3055219855","Field":"UserName","Value":"Jack"}' "https://servefuture.com/orders/synchOrder"
 ```
 输出结果：
+
+
+#### 3、curl POST 上传文件
+用 -F "file=@__FILE_PATH__" 的请示，传输文件即可
+```
+curl https://servefuture.com//upload -F "file=@/Users/Shared/lkq.jpg" -H "token: 222" -v
+```
