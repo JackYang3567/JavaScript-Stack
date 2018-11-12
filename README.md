@@ -9,6 +9,10 @@ $ curl https://www.servefuture.com//holiday/show/5bbc8488a5373341cade1c41
 ```
 输出结果:
 ```
-{"IsSuccessful":true,"data":{"genre":1,"createdAt":"1539081352","_id":"5bbc8488a5373341cade1c41","country":"中国","areaCode":"86","province":"四川","city":"凉山","zipCode":"615000","holiday":"火把节","startTime":"2019-08-05","endTime":"2019-08-11","day":"7","updatedAt":"1539081352"}}gukong-mini:koa-redis-waiter doer06$ 
-
+{"IsSuccessful":true,"data":
+  {"genre":1,"createdAt":"1539081352","_id":"5bbc8488a5373341cade1c41","country":"中国",
+   "areaCode":"86","province":"四川","city":"凉山","zipCode":"615000","holiday":"火把节",
+   "startTime":"2019-08-05","endTime":"2019-08-11","day":"7","updatedAt":"1539081352"
+   }
+}
 ```
