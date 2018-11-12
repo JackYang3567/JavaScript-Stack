@@ -2,7 +2,7 @@
 ### curl 模拟 GET\POST 请求，以及 curl post 上传文件
 在命令行中，我们使用 curl 这个工具可模拟GET/POST 及POST上传文件
 #### 1、curl GET 请求
-- curl命令 + 请求接口的地址。
+- curl命令 + 请求接口的地址。 
 运行命令:
 ```
 $ curl https://www.servefuture.com//holiday/show/5bbc8488a5373341cade1c41
