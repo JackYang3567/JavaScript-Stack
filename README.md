@@ -29,14 +29,16 @@ FUNCTION get_latest_comments(start, num_items): id_list = redis.lrange(“late
 ## 3、排行榜相关
 另一个很普遍的需求是各种数据库的数据并非存储在内存中，因此在按得分排序以及实时更新这些几乎每秒钟都需要更新的功能上数据库的性能不够理想。
 典型的比如那些在线游戏的排行榜，比如一个Facebook的游戏，根据得分你通常想要：
-– 列出前100名高分选手
-– 列出某用户当前的全球排名
+
+- 列出前100名高分选手
+- 列出某用户当前的全球排名
 这些操作对于Redis来说小菜一碟，即使你有几百万个用户，每分钟都会有几百万个新的得分。
 模式是这样的，每次获得新得分时，我们用这样的代码：
 ZADD leaderboard
 你可能用userID来取代username，这取决于你是怎么设计的。
 得到前100名高分用户很简单：ZREVRANGE leaderboard 0 99。
 用户的全球排名也相似，只需要：ZRANK leaderboard 。
+
 ## 4、按照用户投票和时间排序
 排行榜的一种常见变体模式就像Reddit或Hacker News用的那样，新闻按照类似下面的公式根据得分来排序：
 score = points / time^alpha
