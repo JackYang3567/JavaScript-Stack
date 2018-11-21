@@ -33,10 +33,15 @@ FUNCTION get_latest_comments(start, num_items): id_list = redis.lrange(“late
 - 列出前100名高分选手
 - 列出某用户当前的全球排名
 这些操作对于Redis来说小菜一碟，即使你有几百万个用户，每分钟都会有几百万个新的得分。
+
 模式是这样的，每次获得新得分时，我们用这样的代码：
+
 ZADD leaderboard
+
 你可能用userID来取代username，这取决于你是怎么设计的。
+
 得到前100名高分用户很简单：ZREVRANGE leaderboard 0 99。
+
 用户的全球排名也相似，只需要：ZRANK leaderboard 。
 
 ## 4、按照用户投票和时间排序
