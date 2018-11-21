@@ -30,7 +30,7 @@ sbin/nginx
 - [1、MongoDB 使用地理空间索引](../../tree/11-MongoDB-uses-geospatial-ndex)
 
 # 2、Redis
-- [Redis 的 8 大应用场景！](../../tree/01-redis-application-cenarios)
+- [Redis 的应用场景](../../tree/01-redis-application-cenarios)
 - [Mastering Redis](https://github.com/PacktPublishing/Mastering-Redis)
 
 # 3、Distributed Version Control System Git
