@@ -1,144 +1,28 @@
-学历代表你的过去，能力代表你的现在，学习代表你的将来！
-
-[Android Studio](http://www.android-studio.org/)
-
-### CentOS 7启动nginx
+# Redis 的 8 大应用场景！
 ```
-whereis nginx
-nginx: /usr/local/nginx
--bash-4.2# cd /usr/local/nginx/
-sbin/nginx
 ```
+## 1、缓存
+缓存现在几乎是所有中大型网站都在用的必杀技，合理的利用缓存不仅能够提升网站访问速度，还能大大降低数据库的压力。Redis提供了键过期功能，也提供了灵活的键淘汰策略，所以，现在Redis用在缓存的场合非常多。
 
-# 0、JavaScript Stack
- - [1、MXXN Stack](../../tree/01-MXXN-Stack) 
- - [2、MEAN Stack](../../tree/02-MEAN-Stack)
- - [3、MERN Stack](../../tree/03-MERN-Stack)
- - [4、MKAN Stack](../../tree/04-MKAN-Stack) 
- - [5、MKRN Stack](../../tree/05-MKAN-Stack) 
- - [6、MKVN Stack](../../tree/06-MKAN-Stack) 
- - [7、RMXXN Stack](../../tree/07-RMXXN-Stack) 
+## 2、排行榜
+很多网站都有排行榜应用的，如京东的月度销量榜单、商品按时间的上新排行榜等。Redis提供的有序集合数据类构能实现各种复杂的排行榜应用。
 
-# 1、MongoDB
-- [1、MongoDB简介](../../tree/11-mongodb-introduction)
-- [2、MongoDB安装](../../tree/11-mongodb-install)
-- [3、MongoDB数据模型](../../tree/11-mongodb-data-model)
-- [4、MongoDB查询数据](../../tree/11-mongodb-query-data)
-- [5、MongoDB更新数据](../../tree/11-mongodb-Update-data)
-- [6、MongoDB删除数据](../../tree/11-mongodb-delete-data])
-- [7、MongoDB数据库管理](../../tree/11-mongodb-Database-management)
-- [1、MongoDB 使用地理空间索引](../../tree/11-MongoDB-uses-geospatial-ndex)
+## 3、计数器
+什么是计数器，如电商网站商品的浏览量、视频网站视频的播放数等。为了保证数据实时效，每次浏览都得给+1，并发量高时如果每次都请求数据库操作无疑是种挑战和压力。Redis提供的incr命令来实现计数器功能，内存操作，性能非常好，非常适用于这些计数场景。
 
-# 2、Redis
-- [Redis 的 8 大应用场景！](../../tree/01-redis-application-cenarios)
-- [Mastering Redis](https://github.com/PacktPublishing/Mastering-Redis)
+## 4、分布式会话
+集群模式下，在应用不多的情况下一般使用容器自带的session复制功能就能满足，当应用增多相对复杂的系统中，一般都会搭建以Redis等内存数据库为中心的session服务，session不再由容器管理，而是由session服务及内存数据库管理。
 
-# 3、Distributed Version Control System Git
-- [1、Git 服务器搭建及存储库的创建](../../tree/31-Git-install)
+## 5、分布式锁
+在很多互联网公司中都使用了分布式技术，分布式技术带来的技术挑战是对同一个资源的并发访问，如全局ID、减库存、秒杀等场景，并发量不大的场景可以使用数据库的悲观锁、乐观锁来实现，但在并发量高的场合中，利用数据库锁来控制资源的并发访问是不太理想的，大大影响了数据库的性能。可以利用Redis的setnx功能来编写分布式的锁，如果设置返回1说明获取锁成功，否则获取锁失败，实际应用中要考虑的细节要更多。
 
-# 4､ RMKVN & RMKRN & RMKAN
+## 6、 社交网络
+点赞、踩、关注/被关注、共同好友等是社交网站的基本功能，社交网站的访问量通常来说比较大，而且传统的关系数据库类型不适合存储这种类型的数据，Redis提供的哈希、集合等数据结构能很方便的的实现这些功能。
 
-# 5､ 网站应用微信登录开发指南
+## 7、最新列表
+Redis列表结构，LPUSH可以在列表头部插入一个内容ID作为关键字，LTRIM可用来限制列表的数量，这样列表永远为N个ID，无需查询最新的列表，直接根据ID去到对应的内容页即可。
 
-# 6、RESTful API
-- [创建API](../../tree/01-RESTful-API)
-- [命令行测试API](../../tree/02-RESTful-API)
-
-https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419316505&token=&lang=zh_CN
-
-'''
-const xcxConst = require('../config/common/xcx.config')
-
-const request = require('request')
-
-const BaseHandler = require('../libs/baseHandler')
-let controllers = new BaseHandler()
-
-/* 微信登陆 */
-const AppID  = xcxConst.APPID
-const SECRET = xcxConst.AppSecret
-const URI    = xcxConst.WEB_URL
-
-controllers.wx_login = async (ctx, next)=>{
-   
-    const STATE        = uuidv4().split('-').join('')
-    // 第一步：用户同意授权，获取code
-    const CALLBACK     = 'get_wx_access_token';
-    const REDIRECT_URI = `${encodeURIComponent(URI)}${CALLBACK}`  
-    const SCOPE        = 'snsapi_login'//'snsapi_base'//'snsapi_userinfo';
-     // 这是编码后的地址
-    let wxURL = `https://open.weixin.qq.com/connect/qrconnect?appid=${AppID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=${SCOPE}&state=${STATE}#wechat_redirect`
-    //          `https://open.weixin.qq.com/connect/qrconnect?appid=${AppID}&redirect_uri=${return_uri}&response_type=code&scope=SCOPE&state=STATE#wechat_redirect`
-    const url = `https://open.weixin.qq.com/connect/qrconnect?appid=${AppID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=snsapi_login&state=3d6be0a4035d839573b04816624a415e#wechat_redirect`
-   // const url = `https://open.weixin.qq.com/connect/qrconnect?appid=${AppID}&redirect_uri=https%3A%2F%2Fpassport.yhd.com%2Fwechat%2Fcallback.do&response_type=code&scope=snsapi_login&state=3d6be0a4035d839573b04816624a415e#wechat_redirect`
-  
-   
-    console.log(wxURL)
-    ctx.redirect(wxURL)
-    
-}
-
-
-controllers.get_wx_access_token = async(ctx, next)=>{
-    //console.log("get_wx_access_token")
-    //console.log("code_return: "+req.query.code)
-    
-    // 第二步：通过code换取网页授权access_token
-  
-    let {code} = {...ctx.params, ...ctx.query}
-    console.log('code....',code)
-    request.get(
-        {   
-            //  `https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code`
-            url:`https://api.weixin.qq.com/sns/oauth2/access_token?appid=${AppID}&secret=${SECRET}&code=${code}&grant_type=authorization_code`,
-        },
-           (error, response, body) =>{
-            if(response.statusCode == 200){
-                
-                // 第三步：拉取用户信息(需scope为 snsapi_userinfo)
-                //console.log(JSON.parse(body));
-                const data = JSON.parse(body);
-                const access_token = data.access_token;
-                const openid = data.openid;
-                
-                request.get(
-                    {
-                       // url:'https://api.weixin.qq.com/sns/userinfo?access_token='+access_token+'&openid='+openid+'&lang=zh_CN',
-                          url:`https://api.weixin.qq.com/sns/userinfo?access_token=${access_token}&openid=${openid}&lang=zh_CN`,
-                    },
-                        (error, response, body)=>{
-                        if(response.statusCode == 200){
-                            
-                            // 第四步：根据获取的用户信息进行对应操作
-                            const userinfo = JSON.parse(body);
-                            //console.log(JSON.parse(body));
-                            console.log('获取微信信息成功！');
-                            
-                            // 小测试，实际应用中，可以由此创建一个帐户
-                            /*
-                            res.send("\
-                                <h1>"+userinfo.nickname+" 的个人信息</h1>\
-                                <p><img src='"+userinfo.headimgurl+"' /></p>\
-                                <p>"+userinfo.city+"，"+userinfo.province+"，"+userinfo.country+"</p>\
-                            ");
-                            */
-                           ctx.body = `<h1>${userinfo.nickname} 的个人信息</h1>
-                                       <p><img src='${userinfo.headimgurl}' /></p>
-                                       <p>${userinfo.city}, ${userinfo.province},${userinfo.country}</p>`
-                            
-                        }else{
-                            console.log(response.statusCode);
-                        }
-                    }
-                );
-            }else{
-                console.log(response.statusCode);
-            }
-        }
-    );
-}
-'''
-
-## -----------------
+## 8、消息系统
+消息队列是大型网站必用中间件，如ActiveMQ、RabbitMQ、Kafka等流行的消息队列中间件，主要用于业务解耦、流量削峰及异步处理实时性低的业务。Redis提供了发布/订阅及阻塞队列功能，能实现一个简单的消息队列系统。另外，这个不能和专业的消息中间件相比。
 
 
