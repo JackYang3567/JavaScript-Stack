@@ -10,6 +10,17 @@ nginx: /usr/local/nginx
 sbin/nginx
 ```
 
+### Mac 启动MongoDB
+```
+brew services restart mongodb@3.6
+```
+### CentOS/Mac 命令行远程连服务器
+```
+ssh root@39.108.147.42
+root@39.108.147.42's password: 
+```
+
+
 # 0、JavaScript Stack
  - [1、MXXN Stack](../../tree/01-MXXN-Stack) 
  - [2、MEAN Stack](../../tree/02-MEAN-Stack)
