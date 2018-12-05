@@ -27,7 +27,8 @@ sbin/nginx
 - [5、MongoDB更新数据](../../tree/11-mongodb-Update-data)
 - [6、MongoDB删除数据](../../tree/11-mongodb-delete-data])
 - [7、MongoDB数据库管理](../../tree/11-mongodb-Database-management)
-- [1、MongoDB 使用地理空间索引](../../tree/11-MongoDB-uses-geospatial-ndex)
+- [8､ MongoDB数据库备份还原](../../tree/11-mongodb-Database-backup-restore)
+- [9、MongoDB 使用地理空间索引](../../tree/11-MongoDB-uses-geospatial-ndex)
 
 # 2、Redis
 - [Redis 的应用场景](../../tree/01-redis-application-cenarios)
