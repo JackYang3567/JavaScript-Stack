@@ -59,6 +59,10 @@ root@39.108.147.42's password:
 # 7、CentOS 7
 - [1、命令](../../tree/01-centos7)
 - [2、Nginx安装](../../tree/02-centos7-nginx)
+- [3、Node.js安装](../../tree/03-centos7-nodejs)
+- [4、Redis安装](../../tree/04-centos7-redis)
+- [5、MongoDB安装](../../tree/05-centos7-mongodb)
+- [6、RatHabitMQ安装](../../tree/06-centos7-rathabitmq)
 
 https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419316505&token=&lang=zh_CN
 
