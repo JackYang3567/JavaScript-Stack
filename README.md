@@ -91,3 +91,8 @@ vi /etc/rc.local
 ```
 chmod 755 rc.local
 ```
+
+### 启动nginx时就报错！
+Job for nginx.service failed because the control process exited with error code. See "systemctl status nginx.service" and "journalctl -xe" for details.
+
+你修改的语句末尾少了分号;
