@@ -258,3 +258,41 @@ http {
 保存退出。
 
 重启 Nginx。
+
+
+## 在启动nginx的可能会报错
+```
+nginx: [emerg] the "ssl" parameter requires ngx_http_ssl_module in /usr/local/nginx/conf/nginx.conf
+```
+意思就是你的nginx未开启ssl模块
+
+解决也比较容易，我们在编译的时候开启http_ssl_module模块就可以了
+切换到源码包：
+```
+cd /usr/local/src/nginx-1.15.7
+```
+查看nginx原有的模块
+```
+/usr/local/nginx/sbin/nginx -V
+```
+在configure arguments:后面显示的原有的configure参数如下：
+--prefix=/usr/local/nginx --with-http_stub_status_module 也可能会空哦
+
+那么我们的新配置信息就应该这样写：
+```
+./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module
+```
+运行上面的命令即可，等配置完
+
+配置完成后，运行命令
+make这里不要进行make install，否则就是覆盖安装
+
+然后备份原有已安装好的nginx
+```
+cp /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginx.bak
+```
+然后将刚刚编译好的nginx覆盖掉原有的nginx（这个时候nginx要停止状态）
+```
+cp ./objs/nginx /usr/local/nginx/sbin/
+```
+然后启动nginx，仍可以通过命令查看是否已经加入成功
