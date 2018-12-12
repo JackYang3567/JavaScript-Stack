@@ -66,3 +66,19 @@ tcp6       0      0 :::22                   :::*                    LISTEN      
 你可以将防火墙中的规则条目清除掉：
 
 [root@localhost ~]# iptables -F
+
+## (3)、 安装Nginx
+
+第一步 - 添加Nginx存储库
+要添加CentOS 7 EPEL仓库，请打开终端并使用以下命令：
+sudo yum install epel-release
+
+第二步 - 安装Nginx
+现在Nginx存储库已经安装在您的服务器上，使用以下yum命令安装Nginx ：
+sudo yum install nginx
+在对提示回答yes后，Nginx将在服务器上完成安装。
+
+第三步 - 启动Nginx
+Nginx不会自行启动。要运行Nginx，请输入：
+sudo systemctl start nginx
+
