@@ -38,7 +38,7 @@ wget -c https://nginx.org/download/nginx-1.15.7 .tar.gz
 ```
 tar -zxvf nginx-1.15.7.tar.gz
 cd nginx-1.15.7
-``
+```
 配置
 其实在 nginx-1.15.7 版本中你就不需要去配置相关东西，默认就可以了。当然，如果你要自己配置目录也是可以的。
 1.使用默认配置
@@ -93,8 +93,9 @@ chmod 755 rc.local
 ```
 
 ### 启动nginx时就报错！
+```
 Job for nginx.service failed because the control process exited with error code. See "systemctl status nginx.service" and "journalctl -xe" for details.
-
+```
 你修改的语句末尾少了分号;
 
 
@@ -109,11 +110,12 @@ Job for nginx.service failed because the control process exited with error code.
 以Nginx标准配置为例，假如证书文件名是a.pem，私钥文件是a.key。
 
 在Nginx的安装目录下创建cert目录，并且将下载的全部文件拷贝到cert目录中。如果申请证书时是自己创建的CSR文件，请将对应的私钥文件放到cert目录下并且命名为a.key；
+```
 /usr/local/nginx/cert/a.key
 /usr/local/nginx/cert/a.pem
-
+```
 打开 Nginx 安装目录下 conf 目录中的 nginx.conf 文件，找到：
-
+```
 # HTTPS server
 # #server {
 # listen 443;
@@ -130,6 +132,7 @@ Job for nginx.service failed because the control process exited with error code.
 #
 #}
 #}
+```
 将其修改为 (以下属性中ssl开头的属性与证书配置有直接关系，其它属性请结合自己的实际情况复制或调整) :
 ```
 #user  nobody;
