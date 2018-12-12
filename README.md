@@ -96,3 +96,165 @@ chmod 755 rc.local
 Job for nginx.service failed because the control process exited with error code. See "systemctl status nginx.service" and "journalctl -xe" for details.
 
 你修改的语句末尾少了分号;
+
+
+## Nginx/Tengine服务器安装SSL证书
+
+在证书控制台下载Nginx版本证书。下载到本地的压缩文件包解压后包含：
+
+.crt文件：是证书文件，crt是pem文件的扩展名。
+.key文件：证书的私钥文件（申请证书时如果没有选择自动创建CSR，则没有该文件）。
+友情提示： .pem扩展名的证书文件采用Base64-encoded的PEM格式文本文件，可根据需要修改扩展名。
+
+以Nginx标准配置为例，假如证书文件名是a.pem，私钥文件是a.key。
+
+在Nginx的安装目录下创建cert目录，并且将下载的全部文件拷贝到cert目录中。如果申请证书时是自己创建的CSR文件，请将对应的私钥文件放到cert目录下并且命名为a.key；
+/usr/local/nginx/cert/a.key
+/usr/local/nginx/cert/a.pem
+
+打开 Nginx 安装目录下 conf 目录中的 nginx.conf 文件，找到：
+
+# HTTPS server
+# #server {
+# listen 443;
+# server_name localhost;
+# ssl on;
+# ssl_certificate cert.pem;
+# ssl_certificate_key cert.key;
+# ssl_session_timeout 5m;
+# ssl_protocols SSLv2 SSLv3 TLSv1;
+# ssl_ciphers ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
+# ssl_prefer_server_ciphers on;
+# location / {
+#
+#
+#}
+#}
+将其修改为 (以下属性中ssl开头的属性与证书配置有直接关系，其它属性请结合自己的实际情况复制或调整) :
+```
+#user  nobody;
+worker_processes  1;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    #gzip  on;
+
+    server {
+        listen       80;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+	   proxy_pass http://127.0.0.1:29970;
+          # proxy_pass http://127.0.0.1:8899;
+	    proxy_set_header Host $host;
+ 	    proxy_set_header X-Forwarded-For $remote_addr;
+        }
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        #
+        #location ~ \.php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        #
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        #    include        fastcgi_params;
+        #}
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
+    }
+
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    server {
+        listen       443 ssl;
+        server_name  localhost;
+
+        ssl_certificate      ../cert/1533397779500.pem;
+        ssl_certificate_key  ../cert/1533397779500.key;
+
+        ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
+
+       # ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
+       # ssl_protocols TLSv1 TLSv1.1 TLSv1.2;        
+
+        ssl_ciphers  HIGH:!aNULL:!MD5;
+        ssl_prefer_server_ciphers  on;
+
+        location / {
+       	    proxy_pass http://127.0.0.1:29970/;
+	    proxy_set_header Host $host;
+	    proxy_set_header X-Forwarded-For $remote_addr;
+	}
+    }
+
+}
+```
+保存退出。
+
+重启 Nginx。
