@@ -75,10 +75,18 @@ sudo yum install epel-release
 
 第二步 - 安装Nginx
 现在Nginx存储库已经安装在您的服务器上，使用以下yum命令安装Nginx ：
+```
 sudo yum install nginx
+```
 在对提示回答yes后，Nginx将在服务器上完成安装。
 
 第三步 - 启动Nginx
 Nginx不会自行启动。要运行Nginx，请输入：
+```
 sudo systemctl start nginx
+```
+第四步 - 停止Nginx
+```
+systemctl stop nginx
+```
 
