@@ -56,6 +56,9 @@ root@39.108.147.42's password:
 - [创建API](../../tree/01-RESTful-API)
 - [命令行测试API](../../tree/02-RESTful-API)
 
+# 7、CentOS 7
+- [1、命令](../../tree/01-centos7)
+
 https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419316505&token=&lang=zh_CN
 
 '''
