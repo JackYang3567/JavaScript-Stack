@@ -58,6 +58,7 @@ root@39.108.147.42's password:
 
 # 7、CentOS 7
 - [1、命令](../../tree/01-centos7)
+- [2、Nginx安装](../../tree/02-centos7-nginx)
 
 https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419316505&token=&lang=zh_CN
 
