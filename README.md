@@ -1,6 +1,35 @@
 学历代表你的过去，能力代表你的现在，学习代表你的将来！
 
 [Android Studio](http://www.android-studio.org/)
+### 阿里云ECS实例中 生产环境启动
+一、打开控制台或终端 （或用阿里云远程连接）
+```
+# ssh root@39.108.xxx.xx
+root@39.108.xxx.xx's password: 
+# redis-server
+```
+二、打开控制台或终端 
+1、确定redis是否启动
+```
+#redis-cli
+127.0.0.1:6379> exit
+```
+2、启动nginx
+```
+# /usr/local/nginx/sbin/nginx 
+```
+3、删除系统日志
+```
+# cd /data/logs/nodes/
+# ls -l
+# rm -rf *.*
+```
+4、启动Web服务器
+```
+# cd /www/web/koa-redis-waiter/
+# pm2 stop all
+# pm2 start process.json
+```
 
 ### CentOS 7启动nginx
 ```
