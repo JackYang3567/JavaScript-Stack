@@ -2,7 +2,7 @@
 
 [Android Studio](http://www.android-studio.org/)
 ### 阿里云ECS实例中 生产环境启动
-一、打开控制台或终端 （或用阿里云远程连接）
+一、启动redis, 打开控制台或终端 （或用阿里云远程连接）
 ```
 # ssh root@39.108.xxx.xx
 root@39.108.xxx.xx's password: 
