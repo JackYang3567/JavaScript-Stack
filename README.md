@@ -1,3 +1,9 @@
+
+# Redis常见错误
+1、ReplyError: MISCONF Redis is configured to save RDB snapshots, but it is currently not able to persist on disk. 
+解决：
+127.0.0.1:6379> config set stop-writes-on-bgsave-error no
+
 # Redis应用场景
 
 Redis是一个key-value存储系统，现在在各种系统中的使用越来越多，大部分情况下是因为其高性能的特性，被当做缓存使用，这里介绍下Redis经常遇到的使用场景
