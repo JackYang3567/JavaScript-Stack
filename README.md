@@ -45,8 +45,8 @@ brew services restart mongodb@3.6
 ```
 ### CentOS/Mac 命令行远程连服务器
 ```
-ssh root@39.108.147.42
-root@39.108.147.42's password: 
+ssh root@39.108.XXX.42
+root@39.108.XXX.42's password: 
 ```
 
 
