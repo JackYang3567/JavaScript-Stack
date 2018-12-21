@@ -90,3 +90,25 @@ sudo systemctl start nginx
 systemctl stop nginx
 ```
 
+## (4)、 ssh root@39.108.XX.XX 连接报错
+```
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ECDSA key sent by the remote host is
+SHA256:nuUdUUDbJT2RqWoZztrFfFw22wmvx8RLXH44FvdtbaU.
+Please contact your system administrator.
+Add correct host key in /Users/doer06/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /Users/doer06/.ssh/known_hosts:5
+ECDSA host key for 39.108.147.42 has changed and you have requested strict checking.
+Host key verification failed.
+```
+解决办法：
+原因是这样，一旦使用本机ssh连接过目标机，则会在~/.ssh/know_hosts文件下生成目标机的公钥，以便下次可以直接使用。所以，我们可以把该文件下39.108.XX.XX对应的公钥删除掉
+
+vi ~/.ssh/know_hosts
+删除掉39.108.XX.XX那一行。
+
