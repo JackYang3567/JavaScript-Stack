@@ -1,6 +1,6 @@
 # JavaScript实例
 
- - [1、时间日期处理](../../tree/01-js-time-date) 
+ - [1、JavaScript实例--时间日期处理](../../blob/01-js-time-date) 
 
 
 
