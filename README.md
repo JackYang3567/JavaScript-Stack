@@ -94,6 +94,9 @@ root@39.108.XXX.42's password:
 - [5、MongoDB安装](../../tree/05-centos7-mongodb)
 - [6、RatHabitMQ安装](../../tree/06-centos7-rathabitmq)
 
+# 8､ 实战实用技巧
+- [1、Node.js Request发短信](../../tree/01-node-request-send-sms)
+
 https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419316505&token=&lang=zh_CN
 
 '''
