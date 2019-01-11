@@ -97,6 +97,10 @@ root@39.108.XXX.42's password:
 # 8､ 实战实用技巧
 - [1、Node.js Request发短信](../../tree/01-node-request-send-sms)
 
+
+# 9､ Vagrant
+- [1、Vagrant](../../tree/01-vagrant-install)
+
 https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419316505&token=&lang=zh_CN
 
 '''
