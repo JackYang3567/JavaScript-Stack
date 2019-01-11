@@ -101,7 +101,14 @@ root@39.108.XXX.42's password:
 # 9､ Vagrant
 - [1、Vagrant](../../tree/01-vagrant-install)
 
+# 10､ Lua & Cocos
+https://docs.cocos.com/creator/manual/zh/getting-started/install.html
+- [1、Lua](../../tree/01-Lua)
+
+
 https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419316505&token=&lang=zh_CN
+
+
 
 '''
 const xcxConst = require('../config/common/xcx.config')
