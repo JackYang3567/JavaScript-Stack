@@ -98,3 +98,19 @@ function GetRequest() {
 
 
 ```         
+
+# 3、JS实现点击按钮复制input标签中的值到剪贴板
+
+
+ ```
+  <span class="copy_color"><a href="javascript:;" onclick="copyInputText('P_Time')">复制</a> </span>
+  function copyInputText(idName) {  
+  <script type="text/javascript">
+        var TextVal =document.getElementById(idName);  
+        TextVal.select(); // 选择对象  
+        document.execCommand("Copy"); // 执行浏览器复制命令  
+       // alert("复制成功！");
+        return;
+    }
+</script>
+ ```
