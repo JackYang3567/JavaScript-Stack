@@ -99,6 +99,7 @@ root@39.108.XXX.42's password:
 
 # 8､ 实战实用技巧
 - [1、Node.js Request发短信](../../tree/01-node-request-send-sms)
+- [2、js实战实用技巧 (1)](../../tree/01-node-js-example-1)
 
 
 # 9､ Vagrant
