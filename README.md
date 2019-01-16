@@ -103,9 +103,11 @@ function GetRequest() {
 
 
  ```
-  <span class="copy_color"><a href="javascript:;" onclick="copyInputText('P_Time')">复制</a> </span>
-  function copyInputText(idName) {  
-  <script type="text/javascript">
+<span class="copy_color"><a href="javascript:;" onclick="copyInputText('P_Time')">复制</a> </span>
+  
+<script type="text/javascript">
+   function copyInputText(idName) {  
+
         var TextVal =document.getElementById(idName);  
         TextVal.select(); // 选择对象  
         document.execCommand("Copy"); // 执行浏览器复制命令  
