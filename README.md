@@ -110,8 +110,15 @@ https://docs.cocos.com/creator/manual/zh/getting-started/install.html
 - [1、Lua](../../tree/01-Lua)
 
 
+# 11､ 微信相关开发
+## 1、网站应用微信登录开发指南
 https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419316505&token=&lang=zh_CN
 
+## 2、微信JS-SDK说明文档
+https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1455784140
+
+## 3、微信 JS 接口签名校验工具
+https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=jsapisign
 
 
 '''
