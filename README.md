@@ -1,8 +1,10 @@
-一、安装步骤如下：
-1、下载virtualBox，地址点这里，安装
-2、下载vagrant，地址点这里，安装
-3、下载镜像，有几个地方可以下载：http://www.vagrantbox.es/和https://atlas.hashicorp.com/boxes/search都可以，这里我随便找了个centos65-x86_64-20140116
-4、将下载的镜像加载，顺便说下，第3步可以不用，vagrant支持在线安装镜像，但由于长城的原因，所以最好通过其它方法将镜像下载下来,再在本地加载,，打开cmd，输入以下命令：
+# vagrant
+
+* 一、安装步骤如下：
+   1. 下载virtualBox，地址点[这里](https://www.virtualbox.org/wiki/Downloads),进入后点 Windows hosts，下载完成后运行安装
+   2. 下载vagrant，地址点[这里](https://www.vagrantup.com/downloads.html),进入后点 Windows 64-bit，下载完成后运行安装
+   3. 下载镜像，有几个地方可以下载：http://www.vagrantbox.es/和https://atlas.hashicorp.com/boxes/search都可以，这里我随便找了个centos65-x86_64-20140116
+   4. 将下载的镜像加载，顺便说下，第3步可以不用，vagrant支持在线安装镜像，但由于长城的原因，所以最好通过其它方法将镜像下载下来,再在本地加载,，打开cmd，输入以下命令：
 # 命令是这样的，title为自己起的名字，url为box地址，可以在线也可以本地
 # vagrant box add {title} {url}
 # 实际安装命令，本地下载下来的
