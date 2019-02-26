@@ -3,23 +3,25 @@
 * 一、安装步骤如下：
 1. 下载virtualBox，地址点[这里](https://www.virtualbox.org/wiki/Downloads),进入后点 Windows hosts，下载完成后运行安装
 2. 下载vagrant，地址点[这里](https://www.vagrantup.com/downloads.html),进入后点 Windows 64-bit，下载完成后运行安装
-3. 下载镜像，有几个地方可以下载：[http://www.vagrantbox.es/](http://www.vagrantbox.es/)和[https://atlas.hashicorp.com/boxes/search](https://atlas.hashicorp.com/boxes/search)都可以，这里我随便找了个centos65-x86_64-20140116
-> [CentOS 7.2 x64](https://github.com/CommanderK5/packer-centos-template/releases/download/0.7.2/vagrant-centos-7.2.box)
+3. 下载镜像，有几个地方可以下载：[http://www.vagrantbox.es/](http://www.vagrantbox.es/)和[https://atlas.hashicorp.com/boxes/search](https://atlas.hashicorp.com/boxes/search)都可以，这里我随便找了个 [CentOS 7.2 x64](https://github.com/CommanderK5/packer-centos-template/releases/download/0.7.2/vagrant-centos-7.2.box)
 4. 将下载的镜像加载，顺便说下，第3步可以不用，vagrant支持在线安装镜像，但由于长城的原因，所以最好通过其它方法将镜像下载下来,再在本地加载,，打开cmd，输入以下命令：
 > 命令是这样的，title为自己起的名字，url为box地址，可以在线也可以本地
-> vagrant box add {title} {url}
+
+```
+vagrant box add {title} {url}
+```
 > 实际安装命令，本地下载下来的
-vagrant box add CentOS7.2_64 D:\User\vagrant\boxes\centos-7.0-x86_64.box 
- 5、找一个/新建一个目录，例如vagrant_Centos7.2，然后初始化环境
-
-
-
+```
+vagrant box add CentOS7.2_64 F:\vagrant_boxes\centos\vagrant-centos-7.2.box
+```
+5. 找一个/新建一个目录，例如vagrant_Centos7.2，然后初始化环境
+```
 mkdir vagrant_Centos7.2
 cd vagrant_Centos7.2
 vagrant init  CentOS7.2_64
 
 vagrant up
-
+```
 Bringing machine 'default' up with 'virtualbox' provider...
 ==> default: Importing base box 'CentOS7.0_64'...
 ==> default: Matching MAC address for NAT networking...
@@ -63,7 +65,7 @@ VirtualBox GUI is open.
 The primary issue for this error is that the provider you're using
 is not properly configured. This is very rarely a Vagrant issue.
 
-如果报错：
+6. 如果报错：
 Timed out while waiting for the machine to boot. This means that
 Vagrant was unable to communicate with the guest machine within
 the configured ("config.vm.boot_timeout" value) time period.
@@ -93,23 +95,24 @@ end
 VT-x/AMD-V 硬件加速在您的系统中不可用。您的 64-位虚拟机将无法检测到 64-位处理器，从而无法启动。
 https://jingyan.baidu.com/article/09ea3ede7a9dd7c0aede39fb.html
 
-7、此时windows下可以用putty或者是xshell来连接，host地址如上方标识的注意： 127.0.0.1:2222，用户名密码都为：vagrant
+7. 此时windows下可以用putty或者是xshell来连接，host地址如上方标识的注意： 127.0.0.1:2222，用户名密码都为：vagrant
 
 若要取得root用户的权限（避免每次命令都输入sudo）
+```
 $ su root
 Passwort:vagrant
-
+```
 #
 
 默认的共享文件夹的对于关系是windows下的vagrant_project文件夹对应linux下的/vagrant文件夹，可以随便在双方建立几个文件测试下是否两方是同步的
-8、关闭等命令，由于还有好多需要配置，暂时可以关闭，等配置完成后再启动
-#关闭
-vagrant halt
-#重启
-vagrant reload
+8. 关闭等命令，由于还有好多需要配置，暂时可以关闭，等配置完成后再启动
+* 关闭
+```vagrant halt```
+* 重启
+```vagrant reload```
 
-常用的几个vagrant命令
-
+* 常用的几个vagrant命令
+```
 $ vagrant init      # 初始化
 
 $ vagrant up        # 启动虚拟机
@@ -120,17 +123,19 @@ $ vagrant suspend   # 挂起虚拟机
 $ vagrant resume    # 唤醒虚拟机
 $ vagrant status    # 查看虚拟机运行状态
 $ vagrant destroy   # 销毁当前虚拟机
+```
 
-
-#box管理命令
+* box管理命令
+```
 $ vagrant box list    # 查看本地box列表
 $ vagrant box add     # 添加box到列表
 
 $ vagrant box remove  # 从box列表移除 
+```
+* 二、网络配置、共享目录等相关配置
 
-二、网络配置、共享目录等相关配置
 以上仅仅是展示了安装和开启的简单用法，但真正能用于开发还需要额外的配置，打开上方提到的Vagrantfile配置文件来进行配置，好多都是已注释掉的，选择去掉即可
-1、网络配置，vagrant有三种配置方法：官网文档点这里查看
+1. 网络配置，vagrant有三种配置方法：官网文档点这里查看
 　　a、端口映射，意思是将虚拟机的端口映射到主机的端口上，主机局域网内可以通过访问这个端口来访问到你虚拟机上的东西
 config.vm.forwarded_port 80, 8080
 　　上述作用是将虚拟机的80端口映射到主机的8080端口上，那我直接访问主机的8080端口就相当于访问虚拟机的80端口
@@ -140,7 +145,7 @@ config.vm.network "private_network", ip: "192.168.33.10"
 　　c、共有网络，主机局域网内成员可以访问虚拟机中的内容，虚拟机相当于局域网内的一员
 config.vm.network "public_network", ip: "192.168.1.120"
 　　以上配置一般来说开发环境也不需要局域网内成员访问，所以大部分情况下是选择用b、私有网络来开发，这个可根据实际情况来选择。
-2、共享目录，用户可以自定义共享目录，在Vagrantfile配置文件中配置：
+2. 共享目录，用户可以自定义共享目录，在Vagrantfile配置文件中配置：
 #禁用原有的默认的共享目录
 config.vm.synced_folder '.', '/vagrant', disabled: true
 #增加新的共享目录，第二个参数以当前文件夹为基准
@@ -157,15 +162,17 @@ vagrant plugin install vagrant-winnfsd
 安装完成后配置type为nfs，虽然官网上说nfs不能应用于windows，但用这个插件后就可以了。
 config.vm.synced_folder "abc", "/www/web/abc",type:"nfs"
 测试了下，此插件还是非常有效的，原先打开yii2框架的文件会超时，或10、20多秒，但用了这个后响应在2s以内，还是可以接受的。另提供一个参考资料：让Vagrant在Windwos下支持使用NFS/SMB共享文件夹从而解决目录共享IO缓慢的问题
- 三、域名访问及打包分发
-1、域名访问，主要是虚拟的本地域名配置问题
+ 
+* 三、域名访问及打包分发
+
+1. 域名访问，主要是虚拟的本地域名配置问题
 这里还是安装了lanmp_v3.1，具体的安装方法可以看以前的文章：Linux HYPERLINK "http://www.cnblogs.com/vishun/p/6089520.html" HYPERLINK "http://www.cnblogs.com/vishun/p/6089520.html"或者去下载官网上去找安装说明
 新建一个站点，指定目录到共享的目录，随便取个虚拟的域名：www.abc.com
 测试需要在主机中修改host，如下：（至于虚拟机中/etc/hosts文件中，测试修改与不修改都不影响访问）
 192.168.33.10    www.abc.com
 192.168.33.10    abc.com
 然后直接在浏览器中用http://www.abc.com既可显示虚拟机中的内容了。而直接在windows中的的IDE修改文件，会实时通过这个网址展示出来。
-2、打包分发
+2. 打包分发
 vagrant package
 
 win10下在PowerShell中运行：
