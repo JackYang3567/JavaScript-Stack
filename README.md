@@ -182,6 +182,19 @@ config.vm.synced_folder "abc", "/www/web/abc",type:"nfs"
 然后直接在浏览器中用http://www.abc.com既可显示虚拟机中的内容了。而直接在windows中的的IDE修改文件，会实时通过这个网址展示出来。
 2. 打包分发
 vagrant package
+当在启动Vagrant后，对于虚拟机有进行过安装环境相关的配置，如果并不希望写在Vagrant的启动shell里面每次都重新安装配置一遍，可以将当前配置好的虚拟机打包成box，
+
+vagrant package --output NAME --vagrantfile FILE
+
+可选参数：
+--output NAME ： （可选）设置通过NAME来指定输出的文件名
+--vagrantfile FILE：（可选）可以将Vagrantfile直接封进box中
+
+注：如果网络模式中使用 private_network 的话，在打包之前需要清除一下private_network的设置，避免不必要的错误：
+
+sudo rm -f /etc/udev/rule.d/70-persistent-net.rules
+
+制作完成之后直接将box文件拿到其他计算机上配置即可使用。
 
 win10下在PowerShell中运行：
 关闭当前centos系统
