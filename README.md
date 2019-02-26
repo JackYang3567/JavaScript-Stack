@@ -137,19 +137,27 @@ $ vagrant box remove  # 从box列表移除
 以上仅仅是展示了安装和开启的简单用法，但真正能用于开发还需要额外的配置，打开上方提到的Vagrantfile配置文件来进行配置，好多都是已注释掉的，选择去掉即可
 1. 网络配置，vagrant有三种配置方法：官网文档点这里查看
 　　a、端口映射，意思是将虚拟机的端口映射到主机的端口上，主机局域网内可以通过访问这个端口来访问到你虚拟机上的东西
-config.vm.forwarded_port 80, 8080
+```
+config.vm.network :forwarded_port, guest: 80, host: 8080
+```
 　　上述作用是将虚拟机的80端口映射到主机的8080端口上，那我直接访问主机的8080端口就相当于访问虚拟机的80端口
 　　b、私有网络，只有主机才能访问虚拟机，主句局域网内成员不能访问的虚拟机的内容
-config.vm.network "private_network", ip: "192.168.33.10"
+  ```
+config.vm.network :private_network, ip: "192.168.33.10"
+```
 　　上述设置完成后，在本机可以通过192.168.33.10来访问虚拟机，需要注意192.168.33.10虽然可以随便设定，但如果主机的ip为192.168.1.xxx字段，那就不要这个再用这个区段，可以2.xxx或3.xxx或其它，以免造成冲突。
 　　c、共有网络，主机局域网内成员可以访问虚拟机中的内容，虚拟机相当于局域网内的一员
-config.vm.network "public_network", ip: "192.168.1.120"
+  ```
+config.vm.network :public_network, ip: "192.168.1.120"
+```
 　　以上配置一般来说开发环境也不需要局域网内成员访问，所以大部分情况下是选择用b、私有网络来开发，这个可根据实际情况来选择。
 2. 共享目录，用户可以自定义共享目录，在Vagrantfile配置文件中配置：
 #禁用原有的默认的共享目录
 config.vm.synced_folder '.', '/vagrant', disabled: true
 #增加新的共享目录，第二个参数以当前文件夹为基准
+```
 config.vm.synced_folder "abc", "/www/web/abc",
+```
 上方相当与windows下的vagrant_project/abc文件夹对应linux下的/www/web/abc文件夹
 除了可以自定义共享文件外，还可以选择共享的方式，vagrant有四种共享的方式，官网文档请点这里查看
 　　a、NFS共享方式，windows平台无法使用此配置，且用此方式时不能修改文件的所有者和所有组
