@@ -108,6 +108,9 @@ root@39.108.XXX.42's password:
 # 10､ Lua & Cocos
 https://docs.cocos.com/creator/manual/zh/getting-started/install.html
 - [1、Lua](../../tree/01-Lua)
+- [go web开发](https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/preface.md)
+- [egg-sequelize](https://github.com/eggjs/egg-sequelize)
+- [Ramda](http://ramda.cn/docs/)
 
 
 # 11､ 微信相关开发
