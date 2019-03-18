@@ -113,6 +113,7 @@ https://docs.cocos.com/creator/manual/zh/getting-started/install.html
 - [Ramda](http://ramda.cn/docs/)
 
 1，关于ace admin
+https://blog.csdn.net/freewebsys/article/details/68955060
 ace admin 是一个非常好的后台系统ui。 
 
 集成了很多的好东西。非常的方便开发后天系统，而且能很漂亮。 
