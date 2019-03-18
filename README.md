@@ -112,6 +112,16 @@ https://docs.cocos.com/creator/manual/zh/getting-started/install.html
 - [egg-sequelize](https://github.com/eggjs/egg-sequelize)
 - [Ramda](http://ramda.cn/docs/)
 
+1，关于ace admin
+ace admin 是一个非常好的后台系统ui。 
+
+集成了很多的好东西。非常的方便开发后天系统，而且能很漂亮。 
+
+上面有一堆的例子。非常的漂亮。 
+
+[http://ace.jeka.by/](http://ace.jeka.by/ )
+
+
 
 # 11､ 微信相关开发
 ## 1、网站应用微信登录开发指南
