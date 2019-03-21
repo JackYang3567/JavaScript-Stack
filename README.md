@@ -1,6 +1,7 @@
 # JavaScript实例
 
 //扫二维码分别下载ios,android不同版app
+```
 <script type="text/javascript">  
     /*  
      * 智能机浏览器版本信息:  
@@ -42,7 +43,7 @@
     //document.writeln(" 是否iPad: " + browser.versions.iPad);  
     //document.writeln(navigator.userAgent);  
 </script>
-
+```
  - [1、JavaScript实例--时间日期处理](../../blob/01-js-time-date) 
 
 
